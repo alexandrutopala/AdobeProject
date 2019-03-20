@@ -1,0 +1,7 @@
+#a comment
+*.iml
+.idea
+
+# Build folders
+*build
+*target
