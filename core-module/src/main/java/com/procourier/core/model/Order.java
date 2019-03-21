@@ -6,14 +6,16 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class Order {
+    private Long id;
     private Buyer buyer;
     private Seller seller;
     private Courier courier;
     private Instant submittedDate;
     private Map<Product, Integer> orderLines;
 
-    public Order(Buyer buyer, Seller seller, Courier courier,
+    public Order(Long id, Buyer buyer, Seller seller, Courier courier,
                  Instant submittedDate, Map<Product, Integer> orderLines) {
+        this.id = Objects.requireNonNull(id);
         this.buyer = Objects.requireNonNull(buyer);
         this.seller = Objects.requireNonNull(seller);
         this.courier = Objects.requireNonNull(courier);
@@ -21,8 +23,12 @@ public final class Order {
         this.orderLines = Collections.unmodifiableMap(orderLines);
     }
 
-    public Order(Buyer buyer, Seller seller, Courier courier, Map<Product, Integer> orderLines) {
-        this(buyer, seller, courier, Instant.now(), orderLines);
+    public Order(Long id, Buyer buyer, Seller seller, Courier courier, Map<Product, Integer> orderLines) {
+        this(id, buyer, seller, courier, Instant.now(), orderLines);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Buyer getBuyer() {
