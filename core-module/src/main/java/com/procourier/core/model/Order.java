@@ -50,4 +50,9 @@ public final class Order {
     public Map<Product, Integer> getOrderLines() {
         return orderLines;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + buyer.getName();
+    }
 }
